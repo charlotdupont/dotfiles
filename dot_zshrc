@@ -2,6 +2,12 @@
 ZSH_THEME=""
 
 # <-- Path/Env -->
+export PNPM_HOME="/home/charles/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 path+=("$BUN_INSTALL/bin")
 path+=("$HOME/.cargo/bin")
 path+=("$HOME/go/bin")
@@ -11,6 +17,10 @@ path+=("$HOME/go/bin")
 
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 export BUN_INSTALL="$HOME/.bun"
 export PATH
 export ZSH="$HOME/.oh-my-zsh"
@@ -18,10 +28,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export VISUAL='code'
 export EDITOR='nano'
 
-# <-- Aliases -->
-alias py="python3"
-alias python="python3"
-alias ls="eza --icons=always --no-user --git -h --git-repos"
+
 
 
 
@@ -38,3 +45,14 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+
+
+
+
+
+
+
+# <-- Aliases -->
+alias py="python3"
+alias python="python3"
+alias ls="eza --icons=always --no-user --git -h --git-repos"
