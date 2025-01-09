@@ -57,6 +57,7 @@ alias py="python3"
 alias python="python3"
 alias ls="eza --icons=always --no-user --git -h --git-repos"
 alias vim="nvim"
+alias lg="lazygit"
 
 # TMUX
 [ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
