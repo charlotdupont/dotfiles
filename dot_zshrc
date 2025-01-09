@@ -13,6 +13,7 @@ path+=("$HOME/.cargo/bin")
 path+=("$HOME/go/bin")
 # path+=("$PATH:$(go env GOPATH)/bin")
 path+=("$HOME/.local/share/bob/v0.10.3/bin")
+path+=("$HOME/.local/bin")
 # path+=("$HOME/binaries")
 
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -33,6 +34,7 @@ eval "$(starship init zsh)"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+eval "$(zoxide init zsh)"
 
 # . "$HOME/.atuin/bin/env"
 
@@ -45,7 +47,7 @@ alias ls="eza --icons=always --no-user --git -h --git-repos"
 alias vim="nvim"
 alias lg="lazygit"
 alias vi="nvim"
-
+alias cd="z"
 
 # <-- Editors -->
 export EDITOR="nvim"
