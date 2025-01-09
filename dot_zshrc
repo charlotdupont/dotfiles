@@ -12,7 +12,7 @@ path+=("$BUN_INSTALL/bin")
 path+=("$HOME/.cargo/bin")
 path+=("$HOME/go/bin")
 # path+=("$PATH:$(go env GOPATH)/bin")
-# path+=("$HOME/.local/share/bob/v0.10.2/bin")
+path+=("$HOME/.local/share/bob/v0.10.3/bin")
 # path+=("$HOME/binaries")
 
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -56,3 +56,4 @@ eval "$(atuin init zsh)"
 alias py="python3"
 alias python="python3"
 alias ls="eza --icons=always --no-user --git -h --git-repos"
+alias vim="nvim"
