@@ -1,0 +1,8 @@
+theme = catppuccin-mocha
+title = ""
+window-decoration = true
+cursor-style=bar
+
+window-height = 40
+window-width = 120
+gtk-single-instance = true
