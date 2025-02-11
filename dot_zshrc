@@ -1,3 +1,18 @@
+# <-- Editors -->
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# <-- Helper Functions -->
+
+# alias_if_defined() <command> <alias> <command_with_args>
+# usage: alias_if_defined "ls" "l" "ls -lh"
+alias_if_defined() {
+  if command -v $1 >/dev/null 2>&1; then # check if the command exists
+    alias $2="$3" # create an alias if it does
+  fi
+}
+
+
 # <-- Variables -->
 ZSH_THEME=""
 
@@ -11,12 +26,13 @@ esac
 path+=("$BUN_INSTALL/bin")
 path+=("$HOME/.cargo/bin")
 path+=("$HOME/go/bin")
-# path+=("$PATH:$(go env GOPATH)/bin")
 path+=("$HOME/.local/share/bob/v0.10.3/bin")
 path+=("$HOME/.local/bin")
-# path+=("$HOME/binaries")
+# path+=("$PATH:$(go env GOPATH)/bin")
 
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+[ -f "/home/charles/.ghcup/env" ] && . "/home/charles/.ghcup/env" # ghcup-env
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -36,22 +52,23 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 eval "$(zoxide init zsh)"
 
-# . "$HOME/.atuin/bin/env"
-
 eval "$(atuin init zsh)"
 
+# . "$HOME/.atuin/bin/env"
+
 # <-- Aliases -->
+alias_if_defined "eza" "ls" "eza --icons=always --no-user --git -h --git-repos" # replace ls with eza
+alias_if_defined "z" "cd" "z" # replace cd with zioxide (z)
+
 alias py="python3"
 alias python="python3"
-alias ls="eza --icons=always --no-user --git -h --git-repos"
-alias vim="nvim"
+
 alias lg="lazygit"
+
+alias vim="nvim"
 alias vi="nvim"
-alias cd="z"
 
-# <-- Editors -->
-export EDITOR="nvim"
-export VISUAL="nvim"
 
-# TMUX
-[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
+
+# Tmux
+# [ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
