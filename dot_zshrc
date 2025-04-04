@@ -23,15 +23,19 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+path+=("$HOME/binaries/stand_alone")
+path+=("$HOME/binaries/fasm2")
 path+=("$BUN_INSTALL/bin")
 path+=("$HOME/.cargo/bin")
 path+=("$HOME/go/bin")
 path+=("$HOME/.local/share/bob/v0.10.3/bin")
 path+=("$HOME/.local/bin")
+path+=("$HOME/.atuin/bin")
+path+=("/opt/maven/bin")
 # path+=("$PATH:$(go env GOPATH)/bin")
 
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
+[[ ! -r /home/charles/.opam/opam-init/init.zsh ]] || source /home/charles/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null # opam configuration
 [ -f "/home/charles/.ghcup/env" ] && . "/home/charles/.ghcup/env" # ghcup-env
 
 export NVM_DIR="$HOME/.config/nvm"
@@ -58,7 +62,12 @@ eval "$(atuin init zsh)"
 
 # <-- Aliases -->
 alias_if_defined "eza" "ls" "eza --icons=always --no-user --git -h --git-repos" # replace ls with eza
+alias_if_defined "cloc" "cloc" "cloc --quiet --vcs=git"
 alias_if_defined "z" "cd" "z" # replace cd with zioxide (z)
+alias_if_defined "batcat" "cat" "batcat"
+alias_if_defined "lazygit" "lzd" "lazygit"
+
+alias more="less"
 
 alias py="python3"
 alias python="python3"
@@ -68,7 +77,7 @@ alias lg="lazygit"
 alias vim="nvim"
 alias vi="nvim"
 
-
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | batcat -p -lman'"
 
 # Tmux
 # [ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
