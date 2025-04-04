@@ -33,3 +33,5 @@ export PATH="$PATH:/home/charles/.local/share/JetBrains/Toolbox/scripts"
 
 
 . "$HOME/.atuin/bin/env"
+
+[ -f "/home/charles/.ghcup/env" ] && . "/home/charles/.ghcup/env" # ghcup-env
